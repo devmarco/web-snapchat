@@ -1,0 +1,45 @@
+/*------------------------------------*\
+    $IMPORT BOOTSTRAP
+\*------------------------------------*/
+
+@import "bootstrap/mixins";
+@import "bootstrap/variables";
+@import "bootstrap/responsive-utilities";
+@import "bootstrap/button-groups";
+@import "bootstrap/buttons";
+@import "bootstrap/grid";
+@import "bootstrap/dropdowns";
+
+/**
+ * Generic utility styles etc.
+ */
+@import "generic/mixins";
+@import "generic/normalize";
+@import "generic/reset";
+@import "generic/clearfix";
+//@import "generic/sprites";
+
+/**
+ * Base styles; unclassed HTML elements etc.
+ */
+@import "base/main";
+@import "base/headings";
+@import "base/paragraphs";
+@import "base/images";
+@import "base/forms";
+@import "base/typograph";
+@import "base/margin";
+
+/*
+ * Objects and abstractions
+ */
+@import 'objects/slider';
+
+/**
+ * PARTIALS MAIN
+ */
+@import 'partials/layout';
+@import 'partials/header';
+@import 'partials/footer';
+@import 'partials/index';
+@import 'partials/message';

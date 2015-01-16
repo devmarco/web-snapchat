@@ -1,0 +1,24 @@
+body, html {
+    color: rgba(0,0,0,0.8);
+    height: 100%;
+}
+
+.wrapper {
+	min-height: 100%;
+	height: 100%;
+
+	> header, footer {
+		height: 10%;
+	}
+
+	> main {
+		height: 80%;
+	}
+}
+
+.header__bx,
+.main__bx,
+.footer__bx {
+	max-width: 90%;
+	margin: 0 auto;
+}

@@ -1,0 +1,163 @@
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+/**
+ * Create a fully formed type style (sizing and vertical rhythm) by passing in a
+ * single value, e.g.:
+ *
+   `@include font-size(10px);`
+ *
+ * Thanks to @redclov3r for the `line-height` Sass:
+ * twitter.com/redclov3r/status/250301539321798657
+ */
+@mixin font-size($font-size, $line-height:true){
+    font-size:$font-size;
+    font-size:($font-size / $base-font-size)*1rem;
+    @if $line-height == true{
+        line-height:ceil($font-size / $base-line-height) * ($base-line-height / $font-size);
+    }
+}
+
+/**
+ * Create share container
+ *
+   `@include share-icon(vrum);`
+ *
+ */
+@mixin share-icon($icon-name: black){
+  & .facebook {
+      @extend .icons-icon-facebook-#{$icon-name};
+  }
+  & .twitter {
+      @extend .icons-icon-twitter-#{$icon-name};
+      margin-top: 1px;
+  }
+  & .google {
+      @extend .icons-icon-google-#{$icon-name};
+  }
+}
+
+/**
+ * Create vendor-prefixed CSS in one go, e.g.
+ *
+   `@include vendor(border-radius, 4px);`
+ *
+ */
+@mixin vendor($property, $value...){
+    -webkit-#{$property}:$value;
+       -moz-#{$property}:$value;
+        -ms-#{$property}:$value;
+         -o-#{$property}:$value;
+            #{$property}:$value;
+}
+
+/**
+ * Force overly long spans of text to truncate, e.g.:
+ *
+   `@include truncate(100%);`
+ *
+ * Where `$truncation-boundary` is a united measurement.
+ */
+@mixin truncate($truncation-boundary){
+    max-width:$truncation-boundary;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+/**
+ * Create opacity CSS in one go, e.g.
+ *
+   `@include opacity(4);`
+ *
+ */
+
+@mixin opacity($value) {
+    $calc: ($value*10);
+    zoom: 1;
+    filter: alpha(opacity=$calc);
+    opacity: ($value/10);
+}
+
+
+/**
+ * Media query mixin.
+*/
+@mixin breakpoint($point) {
+  //LG BREAKPOINT
+  @if $point == lg {
+    @media (min-width: 1200px) { @content; }
+  }
+  @else if $point == from-lg {
+    @media (min-width: 1200px) { @content; }
+  }
+  @else if $point == up-to-lg {
+    @media (max-width: 1200px) { @content; }
+  }
+  //MD BREAKPOINT
+  @else if $point == md {
+    @media (min-width:992px) and (max-width: 1199px) { @content; }
+  }
+  @else if $point == from-md {
+    @media (min-width:992px) { @content; }
+  }
+  @else if $point == up-to-md {
+    @media (max-width: 1199px) { @content; }
+  }
+  //SM BREAKPOINT
+  @else if $point == sm {
+    @media (min-width: 768px) and (max-width: 991px) { @content; }
+  }
+  @else if $point == from-sm{
+    @media (min-width: 768px) { @content; }
+  }
+  @else if $point == up-to-sm{
+    @media (max-width: 991px) { @content; }
+  }
+  //XS BREAKPOINT
+  @else if $point == xs {
+    @media (min-width: 481px) and (max-width: 767px)  { @content; }
+  }
+  @else if $point == from-xs {
+    @media (min-width: 481px) { @content; }
+  }
+  @else if $point == up-to-xs {
+    @media (max-width: 767px) { @content; }
+  }
+  //SXS BREAKPOINT
+  @else if $point == sxs {
+    @media (max-width: 480px)  { @content; }
+  }
+}
+
+// http://compass-style.org/reference/compass/helpers/sprites/
+@mixin get-sprite($map, $sprite, $repeat: no-repeat, $height: true, $width: true) {
+
+  //http://compass-style.org/reference/compass/helpers/sprites/#sprite-file
+  $sprite-image: sprite-file($map, $sprite);
+
+  // http://compass-style.org/reference/compass/helpers/sprites/#sprite-url
+  $sprite-map: sprite-url($map);
+
+  // http://compass-style.org/reference/compass/helpers/sprites/#sprite-position
+  $sprite-position: sprite-position($map, $sprite);
+
+  // Returns background
+  background: $sprite-map $sprite-position $repeat;
+
+  // http://compass-style.org/reference/compass/helpers/image-dimensions/
+  // Checks to see if the user wants height returned
+  @if $height == true {
+    // Gets the height of the sprite-image
+    $sprite-height: image-height($sprite-image);
+    // Returns the height
+    height: $sprite-height; }
+
+  // http://compass-style.org/reference/compass/helpers/image-dimensions/
+  // Checks to see if the user wants height returned
+  @if $width == true {
+    // Gets the width of the sprite-image
+    $sprite-width: image-width($sprite-image);
+    // Returns the width
+    width: $sprite-width; }
+}

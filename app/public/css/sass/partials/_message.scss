@@ -1,0 +1,12 @@
+.message__bx {
+    width: 700px;
+    margin: 0 auto;
+    padding: 4em 0;
+
+    h1 {
+		margin-bottom: 1em;
+			
+		@extend %f-bold;
+		@extend %f50;
+    }
+}

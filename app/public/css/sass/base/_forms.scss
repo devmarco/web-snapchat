@@ -1,0 +1,30 @@
+/*------------------------------------*\
+    $FORMS
+\*------------------------------------*/
+
+form label,
+form input,
+form button {
+  width: 100%;
+  display: block;
+}
+
+input[type='text'],
+select {
+  border: 1px solid #ccc;
+  padding: 9px 0;
+  text-indent: 20px;
+  box-shadow: inset 0 0 10px #ccc;
+  width: 100%;
+  display: block;
+  @include vendor(border-radius, 5px);
+  @extend %f14;
+  @extend %f-light;
+}
+
+select {
+  text-indent: 5px;
+  padding: 9px 10px;
+}
+
+

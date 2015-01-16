@@ -1,0 +1,10 @@
+.header__bx {
+	padding: 1.5% 0;
+
+	h1 {
+		text-transform: uppercase;
+
+		@extend %f22;
+		@extend %f-regular;
+	}
+}

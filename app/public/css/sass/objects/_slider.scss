@@ -1,0 +1,25 @@
+.slider__row {
+    position: relative;
+    max-width: 100%;
+    height: 2px;
+    background: #000;
+
+    > button {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: none;
+        background: #ccc;
+        outline: none;
+        position: absolute;
+        top: -9px;
+        cursor: pointer;
+    }
+
+    > .time {
+        display: block;
+        position: absolute;
+        right: -55px;
+        top: -8px;
+    }
+}

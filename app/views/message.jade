@@ -1,0 +1,9 @@
+extends layout
+
+block content
+	.message__bx(ng-controller="TimerCtrl" class="cf")
+		.col-sm-12
+			.row
+				h1= message
+
+				timer(countdown="#{timer}" msg="#{id}") {{ countdown }}
